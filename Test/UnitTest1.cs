@@ -16,10 +16,10 @@ namespace Test
         public void BuildACube()
         {
             
-            Builder builder = new Builder(20, new GameMaster());
+            Builder builder = new Builder(10, new GameMaster());
 
             builder.BuildCells(new Form1(), new Panel());
-            int cells = 20 * 20;
+            int cells = 10 * 10;
 
             Assert.AreEqual(cells, builder.GameMaster.Cells.Count);
         }
@@ -60,15 +60,11 @@ namespace Test
             int row = 12;
             int col = 12;
             GameCell gameCell = form1.GameMaster.Cells.Select(cell => cell).First(cell => cell.Row == row && cell.Col == col);
-            bool topLeft = false;
-            bool topRight = false;
-            bool bottomRight = false;
-            bool bottomLeft = false;
-           
-            topLeft = gameCell.Neighbors.Any(neighbor => neighbor.Row == 11 && neighbor.Col == 11);
-            topRight = gameCell.Neighbors.Any(neighbor => neighbor.Row == 11 && neighbor.Col == 13);
-            bottomRight = gameCell.Neighbors.Any(neighbor => neighbor.Row == 13 && neighbor.Col == 13);
-            bottomLeft = gameCell.Neighbors.Any(neighbor => neighbor.Row == 13 && neighbor.Col == 11);
+      
+            bool topLeft = gameCell.Neighbors.Any(neighbor => neighbor.Row == 11 && neighbor.Col == 11);
+            bool topRight = gameCell.Neighbors.Any(neighbor => neighbor.Row == 11 && neighbor.Col == 13);
+            bool bottomRight = gameCell.Neighbors.Any(neighbor => neighbor.Row == 13 && neighbor.Col == 13);
+            bool bottomLeft = gameCell.Neighbors.Any(neighbor => neighbor.Row == 13 && neighbor.Col == 11);
            
             Assert.IsTrue(topLeft);
             Assert.IsTrue(topRight);
@@ -83,16 +79,11 @@ namespace Test
             int row = 12;
             int col = 1;
             GameCell gameCell = form1.GameMaster.Cells.Select(cell => cell).First(cell => cell.Row == row && cell.Col == col);
-            bool topLeft = false;
-            bool topRight = false;
-            bool bottomRight = false;
-            bool bottomLeft = false;
-            
-            
-            topLeft = gameCell.Neighbors.Any(neighbor => neighbor.Row == 11 && neighbor.Col == 20);
-            topRight = gameCell.Neighbors.Any(neighbor => neighbor.Row == 11 && neighbor.Col == 2);
-            bottomRight = gameCell.Neighbors.Any(neighbor => neighbor.Row == 13 && neighbor.Col == 2);
-            bottomLeft = gameCell.Neighbors.Any(neighbor => neighbor.Row == 13 && neighbor.Col == 20);
+                  
+            bool topLeft = gameCell.Neighbors.Any(neighbor => neighbor.Row == 11 && neighbor.Col == 20);
+            bool topRight = gameCell.Neighbors.Any(neighbor => neighbor.Row == 11 && neighbor.Col == 2);
+            bool bottomRight = gameCell.Neighbors.Any(neighbor => neighbor.Row == 13 && neighbor.Col == 2);
+            bool bottomLeft = gameCell.Neighbors.Any(neighbor => neighbor.Row == 13 && neighbor.Col == 20);
 
             Assert.IsTrue(topLeft);
             Assert.IsTrue(topRight);
@@ -109,7 +100,7 @@ namespace Test
             test.IsAlive();
             gameMaster.addCells(test);
 
-            //< 2 alive neigbors kill a cell
+            //x < 2 alive neigbors kill a cell
             List<GameCell> neighbors = new List<GameCell>();
             neighbors.Add(new GameCell(0, 0));
             neighbors.Add(new GameCell(0, 0));
@@ -131,7 +122,7 @@ namespace Test
             test.IsAlive();
             gameMaster.addCells(test);
 
-            //> 3 alive neigbors kill a cell
+            //x > 3 alive neigbors kill a cell
             List<GameCell> neighbors = new List<GameCell>();
             GameCell alive = new GameCell(0, 0);
             alive.IsAlive();
