@@ -43,13 +43,13 @@ namespace Logic
         public void IsAlive()
         {
             Alive = true;
-            this.BackColor = Color.Black;
+            this.BackColor = Color.LightGray;
         }
 
         public void IsDead()
         {
             Alive = false;
-            this.BackColor = Color.Gray;
+            this.BackColor = Color.DarkSlateGray;
         }
 
         public void LiveOrDie()

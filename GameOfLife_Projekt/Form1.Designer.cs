@@ -48,6 +48,7 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Cursor = System.Windows.Forms.Cursors.Default;
             this.panel1.Location = new System.Drawing.Point(128, 12);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(15, 15);
