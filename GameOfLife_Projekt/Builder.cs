@@ -83,14 +83,8 @@ namespace GameOfLife_Projekt
 
         private GameCell FindByRowAndCol(int row, int col)
         {
-            foreach(GameCell cell in gameMaster.Cells)
-            {
-                if(cell.Row == row && cell.Col == col)
-                {
-                    return cell;
-                }
-            }
-            return null;
+            return gameMaster.Cells.Select(cell => cell).First(cell => cell.Row == row && cell.Col == col);
+       
         }
             
 

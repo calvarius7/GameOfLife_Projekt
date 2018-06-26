@@ -15,14 +15,27 @@ namespace GameOfLife_Projekt
     {
 
         private GameMaster gameMaster; 
+        
 
-        private Builder builder; 
+        private Builder builder;
+        public Builder Builder { get => builder; }
+
+        private int cubeSize;
+        public GameMaster GameMaster { get => gameMaster; }
 
         public Form1()
         {
             InitializeComponent();
             gameMaster = new GameMaster();
-            int cubeSize = 30;
+            cubeSize = 30;
+            builder = new Builder(cubeSize, this.gameMaster);
+            InitGame();
+        }
+
+        public Form1(int cubeSize)
+        {
+            InitializeComponent();
+            gameMaster = new GameMaster();
             builder = new Builder(cubeSize, this.gameMaster);
             InitGame();
         }
