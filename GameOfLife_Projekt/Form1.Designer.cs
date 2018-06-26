@@ -31,6 +31,7 @@
             this.start = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
+            this.stop = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // start
@@ -60,12 +61,23 @@
             this.label1.TabIndex = 2;
             this.label1.Text = "label1";
             // 
+            // stop
+            // 
+            this.stop.Location = new System.Drawing.Point(22, 114);
+            this.stop.Name = "stop";
+            this.stop.Size = new System.Drawing.Size(75, 23);
+            this.stop.TabIndex = 3;
+            this.stop.Text = "stop";
+            this.stop.UseVisualStyleBackColor = true;
+            this.stop.Click += new System.EventHandler(this.Stopbutton_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.stop);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.start);
@@ -80,6 +92,7 @@
         private System.Windows.Forms.Button start;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button stop;
     }
 }
 
