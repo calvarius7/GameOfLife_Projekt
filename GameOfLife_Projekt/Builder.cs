@@ -14,8 +14,7 @@ namespace GameOfLife_Projekt
         private GameMaster gameMaster;
        public GameMaster GameMaster { get => this.gameMaster; set => gameMaster = value; }
 
-        private int cubeSize;
-
+        private readonly int cubeSize;
 
         public Builder(int cubeSize, GameMaster gameMaster)
         {

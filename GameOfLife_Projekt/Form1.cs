@@ -13,7 +13,7 @@ namespace GameOfLife_Projekt
 {
     public partial class Form1 : Form
     {
-        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private BackgroundWorker backgroundWorker1;
         private GameMaster gameMaster;
         private Builder builder;
         public Builder Builder { get => builder; }
@@ -24,9 +24,16 @@ namespace GameOfLife_Projekt
 
         public Form1(int cubeSize)
         {
-            InitializeComponent();
+            InitComponent();
             InitGame(cubeSize);
             InitBackGroundWorker();
+        }
+
+        private void InitComponent()
+        {
+            InitializeComponent();
+            stop.Enabled = false;
+
         }
 
         private void InitBackGroundWorker()
@@ -56,14 +63,17 @@ namespace GameOfLife_Projekt
                 System.Threading.Thread.Sleep(200);
             }
             e.Cancel = true;
-
         }
 
         private void start_Click(object sender, EventArgs e)
         {
             if (!backgroundWorker1.IsBusy)
             {
+                start.Enabled = false;
+                Reset.Enabled = false;
+                stop.Enabled = true;
                 backgroundWorker1.RunWorkerAsync();
+                
             }
 
         }
@@ -101,6 +111,20 @@ namespace GameOfLife_Projekt
             {
                 // Cancel the asynchronous operation.
                 backgroundWorker1.CancelAsync();
+                start.Enabled = true;
+                stop.Enabled = false;
+                Reset.Enabled = true;
+            }
+        }
+
+        private void Reset_Click(object sender, EventArgs e)
+        {
+            if (!backgroundWorker1.IsBusy)
+            {
+               foreach(GameCell cell in GameMaster.Cells)
+                {
+                    cell.IsDead();
+                }
             }
         }
     }

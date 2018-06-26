@@ -32,6 +32,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.stop = new System.Windows.Forms.Button();
+            this.Reset = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // start
@@ -49,7 +50,7 @@
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Location = new System.Drawing.Point(128, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(20, 20);
+            this.panel1.Size = new System.Drawing.Size(15, 15);
             this.panel1.TabIndex = 0;
             // 
             // label1
@@ -71,12 +72,23 @@
             this.stop.UseVisualStyleBackColor = true;
             this.stop.Click += new System.EventHandler(this.Stopbutton_Click);
             // 
+            // Reset
+            // 
+            this.Reset.Location = new System.Drawing.Point(22, 364);
+            this.Reset.Name = "Reset";
+            this.Reset.Size = new System.Drawing.Size(75, 23);
+            this.Reset.TabIndex = 4;
+            this.Reset.Text = "reset";
+            this.Reset.UseVisualStyleBackColor = true;
+            this.Reset.Click += new System.EventHandler(this.Reset_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.Reset);
             this.Controls.Add(this.stop);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
@@ -93,6 +105,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button stop;
+        private System.Windows.Forms.Button Reset;
     }
 }
 
