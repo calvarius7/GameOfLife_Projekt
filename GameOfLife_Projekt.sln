@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2035
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameOfLife_Projekt", "GameOfLife_Projekt\GameOfLife_Projekt.csproj", "{FA8792E3-853C-408C-90CB-1D591BE90D05}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logic", "Logic\Logic.csproj", "{EECE6AA1-F202-480A-A06C-FE905705817F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{A15E11DF-9691-42AE-9361-20CB1C02E1C8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FA8792E3-853C-408C-90CB-1D591BE90D05}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA8792E3-853C-408C-90CB-1D591BE90D05}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA8792E3-853C-408C-90CB-1D591BE90D05}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA8792E3-853C-408C-90CB-1D591BE90D05}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EECE6AA1-F202-480A-A06C-FE905705817F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EECE6AA1-F202-480A-A06C-FE905705817F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EECE6AA1-F202-480A-A06C-FE905705817F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EECE6AA1-F202-480A-A06C-FE905705817F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A15E11DF-9691-42AE-9361-20CB1C02E1C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A15E11DF-9691-42AE-9361-20CB1C02E1C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A15E11DF-9691-42AE-9361-20CB1C02E1C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A15E11DF-9691-42AE-9361-20CB1C02E1C8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {08D80BFC-7A47-4FFE-AC01-91FB7D27E351}
+	EndGlobalSection
+EndGlobal
