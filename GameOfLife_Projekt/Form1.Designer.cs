@@ -35,7 +35,7 @@
             this.ResetButton = new System.Windows.Forms.Button();
             this.CoordinatesLabel = new System.Windows.Forms.Label();
             this.StatsHead = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.StatsGroup = new System.Windows.Forms.Panel();
             this.SuspendLayout();
             // 
             // StartButton
@@ -105,13 +105,13 @@
             this.StatsHead.TabIndex = 6;
             this.StatsHead.Text = "Statistics:";
             // 
-            // panel1
+            // StatsGroup
             // 
-            this.panel1.BackColor = System.Drawing.Color.LightGray;
-            this.panel1.Location = new System.Drawing.Point(11, 125);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(124, 171);
-            this.panel1.TabIndex = 7;
+            this.StatsGroup.BackColor = System.Drawing.Color.LightGray;
+            this.StatsGroup.Location = new System.Drawing.Point(10, 125);
+            this.StatsGroup.Name = "StatsGroup";
+            this.StatsGroup.Size = new System.Drawing.Size(124, 176);
+            this.StatsGroup.TabIndex = 7;
             // 
             // Form1
             // 
@@ -127,7 +127,7 @@
             this.Controls.Add(this.StatsLabel);
             this.Controls.Add(this.InitPanel);
             this.Controls.Add(this.StartButton);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.StatsGroup);
             this.Name = "Form1";
             this.Text = "GameOfLife";
             this.ResumeLayout(false);
@@ -143,7 +143,7 @@
         private System.Windows.Forms.Button ResetButton;
         private System.Windows.Forms.Label CoordinatesLabel;
         private System.Windows.Forms.Label StatsHead;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel StatsGroup;
     }
 }
 
