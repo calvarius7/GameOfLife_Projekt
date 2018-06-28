@@ -154,7 +154,7 @@ namespace Logic
             cell.Neighbors = neighbors;
         }
 
-        private GameCell FindByRowAndCol(int row, int col)
+        public GameCell FindByRowAndCol(int row, int col)
         {
             return cells.Select(cell => cell).First(cell => cell.Row == row && cell.Col == col);
         }

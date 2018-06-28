@@ -81,5 +81,16 @@ namespace GameOfLife_Projekt
         {
             gameMaster.Reset();
         }
+
+        private void Spawn_Click(object sender, EventArgs e)
+        {
+            SpawnTemplate spawn = new Glider();
+            foreach(GameCell cell in spawn.LivingCells)
+            {
+                GameCell found = gameMaster.FindByRowAndCol(cell.Row, cell.Col);
+                found.IsAlive();
+            }
+            
+        }
     }
 }

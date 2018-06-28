@@ -36,6 +36,7 @@
             this.CoordinatesLabel = new System.Windows.Forms.Label();
             this.StatsHead = new System.Windows.Forms.Label();
             this.StatsGroup = new System.Windows.Forms.Panel();
+            this.Spawn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // StartButton
@@ -113,6 +114,16 @@
             this.StatsGroup.Size = new System.Drawing.Size(124, 176);
             this.StatsGroup.TabIndex = 7;
             // 
+            // Spawn
+            // 
+            this.Spawn.Location = new System.Drawing.Point(13, 356);
+            this.Spawn.Name = "Spawn";
+            this.Spawn.Size = new System.Drawing.Size(75, 23);
+            this.Spawn.TabIndex = 8;
+            this.Spawn.Text = "Spawn Glider";
+            this.Spawn.UseVisualStyleBackColor = true;
+            this.Spawn.Click += new System.EventHandler(this.Spawn_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -120,6 +131,7 @@
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.DimGray;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.Spawn);
             this.Controls.Add(this.StatsHead);
             this.Controls.Add(this.CoordinatesLabel);
             this.Controls.Add(this.ResetButton);
@@ -144,6 +156,7 @@
         private System.Windows.Forms.Label CoordinatesLabel;
         private System.Windows.Forms.Label StatsHead;
         private System.Windows.Forms.Panel StatsGroup;
+        private System.Windows.Forms.Button Spawn;
     }
 }
 
