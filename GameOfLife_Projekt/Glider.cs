@@ -18,16 +18,24 @@ namespace GameOfLife_Projekt
 
         private void SetNeighbors()
         {
-            List<GameCell> livingCells = new List<GameCell>();
-            livingCells.Add(base.Start);
-
             int startRow = base.Start.Row;
             int startCol = base.Start.Col;
-
-            livingCells.Add(new GameCell(startRow, startCol - 1));
-            livingCells.Add(new GameCell(startRow + 1, startCol - 2));
-            livingCells.Add(new GameCell(startRow + 1, startCol));
-            livingCells.Add(new GameCell(startRow + 2, startCol));
+            List<GameCell> livingCells = new List<GameCell>
+            {
+                base.Start,
+                new GameCell(startRow + 1, startCol),
+                new GameCell(startRow + 2, startCol)
+            };
+            if (new Random().Next(0,2)==0)
+            {
+                livingCells.Add(new GameCell(startRow, startCol - 1));
+                livingCells.Add(new GameCell(startRow + 1, startCol - 2));
+            }
+            else
+            {
+                livingCells.Add(new GameCell(startRow, startCol + 1));
+                livingCells.Add(new GameCell(startRow + 1, startCol + 2));
+            }
 
             base.LivingCells = livingCells;
         }
