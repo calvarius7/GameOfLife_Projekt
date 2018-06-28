@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 
 namespace Logic
 {
@@ -14,14 +9,14 @@ namespace Logic
         private int minimumCells = 0;
         private int totalCells = 0;
         private int generation = 0;
-        private readonly Label drawStats;
+        private readonly Label drawStatsHere;
 
         public int Generation { get => generation; set => generation = value > 0 ? value : 0; }
         public int CurrentlyLiving { get => currentlyLiving; set => currentlyLiving = value > 0 ? value : 0; }
 
         public Statistics(Label drawStatsHere)
         {
-            this.drawStats = drawStatsHere;
+            this.drawStatsHere = drawStatsHere;
             DrawStats();
         }
 
@@ -34,12 +29,12 @@ namespace Logic
 
         private void DrawStats()
         {
-            drawStats.Text = "Generation:\n" + generation;
-            drawStats.Text += "\nLiving cells:\n" + currentlyLiving;
-            drawStats.Text += "\nMax. cells:\n" + maximumCells;
-            drawStats.Text += "\nMin. cells:\n" + minimumCells;
-            drawStats.Text += "\nAvg. living cells / gen.:\n" + GetAverageCells(generation);
-            drawStats.Text += "\nTotal cells:\n" + totalCells;
+            drawStatsHere.Text = "Generation:\n" + generation;
+            drawStatsHere.Text += "\nLiving cells:\n" + currentlyLiving;
+            drawStatsHere.Text += "\nMax. cells:\n" + maximumCells;
+            drawStatsHere.Text += "\nMin. cells:\n" + minimumCells;
+            drawStatsHere.Text += "\nAvg. living cells / gen.:\n" + GetAverageCells(generation);
+            drawStatsHere.Text += "\nTotal cells:\n" + totalCells;
         }
 
         private int GetAverageCells(int generations)

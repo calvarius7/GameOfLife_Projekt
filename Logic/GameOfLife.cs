@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Logic
 {
@@ -42,16 +39,17 @@ namespace Logic
             }
             else
             {
-                cell.MarkForRevive();
+                cell.MarkForLife();
             }
         }
 
         private void BringToLife(GameCell cell)
         {
             int aliveNeighbors = HowManyAliveNeighbors(cell);
+
             if (aliveNeighbors == 3)
             {
-                cell.MarkForRevive();
+                cell.MarkForLife();
             }
             else
             {
@@ -61,16 +59,7 @@ namespace Logic
 
         private int HowManyAliveNeighbors(GameCell cell)
         {
-            int alive = 0;
-
-            foreach (GameCell neighbour in cell.Neighbors)
-            {
-                if (neighbour.Alive)
-                {
-                    alive++;
-                }
-            }
-            return alive;
+            return cell.Neighbors.Count(neighbor => neighbor.Alive);
         }
     }
 }

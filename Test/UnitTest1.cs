@@ -98,7 +98,7 @@ namespace Test
             GameMaster gameMaster = new GameMaster(0);
             GameCell test = new GameCell(0, 0);
             test.IsAlive();
-            gameMaster.addCells(test);
+            gameMaster.AddCells(test);
 
             //x < 2 alive neigbors kill a cell
             List<GameCell> neighbors = new List<GameCell>();
@@ -108,7 +108,7 @@ namespace Test
             neighbors.Add(new GameCell(0, 0));
 
             test.Neighbors = neighbors;
-            gameMaster.addCells(test);
+            gameMaster.AddCells(test);
 
             gameMaster.GameOfLife();
 
@@ -120,7 +120,7 @@ namespace Test
             GameMaster gameMaster = new GameMaster(0);
             GameCell test = new GameCell(0, 0);
             test.IsAlive();
-            gameMaster.addCells(test);
+            gameMaster.AddCells(test);
 
             //x > 3 alive neigbors kill a cell
             List<GameCell> neighbors = new List<GameCell>();
@@ -138,7 +138,7 @@ namespace Test
             neighbors.Add(alive);
 
             test.Neighbors = neighbors;
-            gameMaster.addCells(test);
+            gameMaster.AddCells(test);
 
             gameMaster.GameOfLife();
 
@@ -151,7 +151,7 @@ namespace Test
             GameMaster gameMaster = new GameMaster(0);
             GameCell test = new GameCell(0, 0);
             test.IsAlive();
-            gameMaster.addCells(test);
+            gameMaster.AddCells(test);
 
             // 2 - 3 alive neigbors keep cell alive
             List<GameCell> neighbors = new List<GameCell>();
@@ -175,7 +175,7 @@ namespace Test
             GameMaster gameMaster = new GameMaster(0);
             GameCell test = new GameCell(0, 0);
             test.IsDead();
-            gameMaster.addCells(test);
+            gameMaster.AddCells(test);
 
             //3 alive neighbors bring a dead cell to live
             List<GameCell> neighbors = new List<GameCell>();

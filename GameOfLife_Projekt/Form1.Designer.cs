@@ -28,33 +28,33 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.start = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.StartButton = new System.Windows.Forms.Button();
+            this.InitPanel = new System.Windows.Forms.Panel();
             this.StatsLabel = new System.Windows.Forms.Label();
-            this.stop = new System.Windows.Forms.Button();
-            this.Reset = new System.Windows.Forms.Button();
+            this.StopButton = new System.Windows.Forms.Button();
+            this.ResetButton = new System.Windows.Forms.Button();
             this.CoordinatesLabel = new System.Windows.Forms.Label();
             this.StatsHead = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // start
+            // StartButton
             // 
-            this.start.Location = new System.Drawing.Point(10, 12);
-            this.start.Name = "start";
-            this.start.Size = new System.Drawing.Size(75, 23);
-            this.start.TabIndex = 1;
-            this.start.Text = "start";
-            this.start.UseVisualStyleBackColor = true;
-            this.start.Click += new System.EventHandler(this.start_Click);
+            this.StartButton.Location = new System.Drawing.Point(10, 12);
+            this.StartButton.Name = "StartButton";
+            this.StartButton.Size = new System.Drawing.Size(75, 23);
+            this.StartButton.TabIndex = 1;
+            this.StartButton.Text = "start";
+            this.StartButton.UseVisualStyleBackColor = true;
+            this.StartButton.Click += new System.EventHandler(this.Start_Click);
             // 
-            // panel1
+            // InitPanel
             // 
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.panel1.Location = new System.Drawing.Point(120, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(15, 15);
-            this.panel1.TabIndex = 0;
+            this.InitPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.InitPanel.Cursor = System.Windows.Forms.Cursors.Default;
+            this.InitPanel.Location = new System.Drawing.Point(120, 0);
+            this.InitPanel.Name = "InitPanel";
+            this.InitPanel.Size = new System.Drawing.Size(15, 15);
+            this.InitPanel.TabIndex = 0;
             // 
             // StatsLabel
             // 
@@ -66,25 +66,25 @@
             this.StatsLabel.Size = new System.Drawing.Size(2, 15);
             this.StatsLabel.TabIndex = 2;
             // 
-            // stop
+            // StopButton
             // 
-            this.stop.Location = new System.Drawing.Point(10, 41);
-            this.stop.Name = "stop";
-            this.stop.Size = new System.Drawing.Size(75, 23);
-            this.stop.TabIndex = 3;
-            this.stop.Text = "stop";
-            this.stop.UseVisualStyleBackColor = true;
-            this.stop.Click += new System.EventHandler(this.Stopbutton_Click);
+            this.StopButton.Location = new System.Drawing.Point(10, 41);
+            this.StopButton.Name = "StopButton";
+            this.StopButton.Size = new System.Drawing.Size(75, 23);
+            this.StopButton.TabIndex = 3;
+            this.StopButton.Text = "stop";
+            this.StopButton.UseVisualStyleBackColor = true;
+            this.StopButton.Click += new System.EventHandler(this.Stopbutton_Click);
             // 
-            // Reset
+            // ResetButton
             // 
-            this.Reset.Location = new System.Drawing.Point(10, 70);
-            this.Reset.Name = "Reset";
-            this.Reset.Size = new System.Drawing.Size(75, 23);
-            this.Reset.TabIndex = 4;
-            this.Reset.Text = "reset";
-            this.Reset.UseVisualStyleBackColor = true;
-            this.Reset.Click += new System.EventHandler(this.Reset_Click);
+            this.ResetButton.Location = new System.Drawing.Point(10, 70);
+            this.ResetButton.Name = "ResetButton";
+            this.ResetButton.Size = new System.Drawing.Size(75, 23);
+            this.ResetButton.TabIndex = 4;
+            this.ResetButton.Text = "reset";
+            this.ResetButton.UseVisualStyleBackColor = true;
+            this.ResetButton.Click += new System.EventHandler(this.Reset_Click);
             // 
             // CoordinatesLabel
             // 
@@ -114,11 +114,11 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.StatsHead);
             this.Controls.Add(this.CoordinatesLabel);
-            this.Controls.Add(this.Reset);
-            this.Controls.Add(this.stop);
+            this.Controls.Add(this.ResetButton);
+            this.Controls.Add(this.StopButton);
             this.Controls.Add(this.StatsLabel);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.start);
+            this.Controls.Add(this.InitPanel);
+            this.Controls.Add(this.StartButton);
             this.Name = "Form1";
             this.Text = "GameOfLife";
             this.ResumeLayout(false);
@@ -127,11 +127,11 @@
         }
 
         #endregion
-        private System.Windows.Forms.Button start;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button StartButton;
+        private System.Windows.Forms.Panel InitPanel;
         private System.Windows.Forms.Label StatsLabel;
-        private System.Windows.Forms.Button stop;
-        private System.Windows.Forms.Button Reset;
+        private System.Windows.Forms.Button StopButton;
+        private System.Windows.Forms.Button ResetButton;
         private System.Windows.Forms.Label CoordinatesLabel;
         private System.Windows.Forms.Label StatsHead;
     }

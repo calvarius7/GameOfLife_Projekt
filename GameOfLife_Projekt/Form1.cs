@@ -1,114 +1,62 @@
 ﻿using Logic;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace GameOfLife_Projekt
 {
     public partial class Form1 : Form
     {
-        private BackgroundWorker backgroundWorker1;
         private GameMaster gameMaster;
         private CellBuilder builder;
-        private Statistics statistics;
         public CellBuilder Builder { get => builder; }
         public GameMaster GameMaster { get => gameMaster; }
 
         public Form1() : this(45) { }
 
-
         public Form1(int cubeSize)
         {
             InitComponent();
             InitGame(cubeSize);
-            InitBackGroundWorker();
         }
 
         private void InitComponent()
         {
             InitializeComponent();
-            stop.Enabled = false;
-            
-        }
-
-        private void InitBackGroundWorker()
-        {
-            backgroundWorker1 = new BackgroundWorker();
-            backgroundWorker1.WorkerSupportsCancellation = true;
-            backgroundWorker1.WorkerReportsProgress = true;
-            backgroundWorker1.DoWork += new DoWorkEventHandler(backgroundWorker1_DoWork);
-            backgroundWorker1.ProgressChanged += new ProgressChangedEventHandler(backgroundWorker1_ProgressChanged);
-
+            StopButton.Enabled = false;
         }
 
         private void InitGame(int cubeSize)
         {
-            gameMaster = new GameMaster(cubeSize);
-            statistics = new Statistics(StatsLabel);
+            gameMaster = new GameMaster(cubeSize)
+            {
+                Statistics = new Statistics(StatsLabel)
+            };
             builder = new CellBuilder(this.gameMaster);
-            builder.BuildCells(this, panel1);
+            builder.BuildCells(this, InitPanel);
 
-            this.Controls.Remove(panel1);
+            Controls.Remove(InitPanel);
         }
 
-
-        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+        private void Start_Click(object sender, EventArgs e)
         {
-            BackgroundWorker worker = sender as BackgroundWorker;
-            int runs = 0;
-            while (!worker.CancellationPending)
+            if (gameMaster.Start())
             {
-                gameMaster.GameOfLife();
-                System.Threading.Thread.Sleep(200);
-                worker.ReportProgress(++runs);
+                StartButton.Enabled = false;
+                ResetButton.Enabled = false;
+                StopButton.Enabled = true;
             }
-            e.Cancel = true;
         }
 
-        private void backgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
-        {
-            statistics.Generation++; 
-            statistics.CurrentlyLiving = gameMaster.Cells.Count(cell => cell.Alive);
-            statistics.ShowStats();
-        }
-
-        private void start_Click(object sender, EventArgs e)
-        {
-            if (!backgroundWorker1.IsBusy)
-            {
-                start.Enabled = false;
-                Reset.Enabled = false;
-                stop.Enabled = true;
-                backgroundWorker1.RunWorkerAsync();
-            }
-
-        }
-
-        public void gameCell_Hover(object sender, EventArgs e)
+       public void GameCell_Hover(object sender, EventArgs e)
         {
             ShowLabel(sender);
         }
 
-        public void gameCell_Click(object sender, EventArgs e)
+       public void GameCell_Click(object sender, EventArgs e)
         {
-            if (!backgroundWorker1.IsBusy)
-            {
-                GameCell cell = sender as GameCell;
-                if (!cell.Alive)
-                {
-                    cell.IsAlive();
-                }
-                else
-                {
-                    cell.IsDead();
-                }
-            }
+            GameCell cell = sender as GameCell;
+            gameMaster.SelecetCell(cell);
             ShowLabel(sender);
         }
 
@@ -121,28 +69,17 @@ namespace GameOfLife_Projekt
 
         private void Stopbutton_Click(object sender, EventArgs e)
         {
-            if (backgroundWorker1.WorkerSupportsCancellation)
+            if (gameMaster.Stop())
             {
-                // Cancel the asynchronous operation.
-                backgroundWorker1.CancelAsync();
-                start.Enabled = true;
-                stop.Enabled = false;
-                Reset.Enabled = true;
-               
+                StartButton.Enabled = true;
+                StopButton.Enabled = false;
+                ResetButton.Enabled = true;
             }
         }
 
         private void Reset_Click(object sender, EventArgs e)
         {
-            if (!backgroundWorker1.IsBusy)
-            {
-               foreach(GameCell cell in GameMaster.Cells)
-                {
-                    cell.IsDead();
-                }
-
-                statistics.SetZero();
-            }
+            gameMaster.Reset();
         }
     }
 }

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -17,7 +13,7 @@ namespace Logic
         private int col;
         
         public List<GameCell> Neighbors { get; set; }
-        public bool Alive { get => alive; set => alive = value; }
+        public bool Alive { get => alive;}
         public int Row { get => row; set => row = value; }
         public int Col { get => col; set => col = value; }
 
@@ -34,21 +30,20 @@ namespace Logic
             goingToLive = false;
         }
 
-
-        public void MarkForRevive()
+        public void MarkForLife()
         {
             goingToLive = true;
             goingToDie = false;
         }
         public void IsAlive()
         {
-            Alive = true;
+            alive = true;
             this.BackColor = Color.LightGray;
         }
 
         public void IsDead()
         {
-            Alive = false;
+            alive = false;
             this.BackColor = Color.Black;
         }
 
@@ -63,7 +58,5 @@ namespace Logic
                 IsAlive();
             }
         }
-
-       
     }
 }

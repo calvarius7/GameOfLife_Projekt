@@ -1,10 +1,6 @@
 ﻿using Logic;
 using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace GameOfLife_Projekt
@@ -44,11 +40,11 @@ namespace GameOfLife_Projekt
                 BorderStyle = start.BorderStyle
             };
             cell.Location = new Point(start.Location.X + col * cell.Size.Width, start.Location.Y + row * cell.Size.Width);
-            cell.Click += new EventHandler(((Form1)form).gameCell_Click);
-            cell.MouseHover += new EventHandler(((Form1)form).gameCell_Hover);
+            cell.Click += new EventHandler(((Form1)form).GameCell_Click);
+            cell.MouseHover += new EventHandler(((Form1)form).GameCell_Hover);
 
             form.Controls.Add(cell);
-            gameMaster.addCells(cell);
+            gameMaster.AddCells(cell);
             
         }
     }
