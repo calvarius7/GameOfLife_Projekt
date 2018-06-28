@@ -5,6 +5,9 @@ namespace Logic
 {
     class GameOfLife
     {
+        /**
+         * Start one GameOfLife-Generation and set every cell in its correct state
+         */
         public void Play(List<GameCell> populaiton)
         {
             Judge(populaiton);

@@ -14,6 +14,10 @@ namespace GameOfLife_Projekt
             GameMaster = gameMaster;
         }
 
+        /**
+         * Build the game-board (a cube full of cells)
+         * Set population for the game
+         */
         public void BuildCells(Form form, Panel start)
         {
             int row = GameMaster.CubeSize;
@@ -29,7 +33,9 @@ namespace GameOfLife_Projekt
             }
             GameMaster.GetNeighborhood();
         }
-
+        /**
+         * If spawn-template is selected, a click on the map will show this template
+         */
         public void SpawnSelection(GameCell start, ComboBox selected)
         {
             if (selected.SelectedItem != null)

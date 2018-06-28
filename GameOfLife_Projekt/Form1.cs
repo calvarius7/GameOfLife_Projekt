@@ -7,11 +7,10 @@ namespace GameOfLife_Projekt
 {
     public partial class Form1 : Form
     {
-        private GameMaster gameMaster;
-        private CellBuilder builder;
-        public CellBuilder Builder { get => builder; }
-        public GameMaster GameMaster { get => gameMaster; }
+        public CellBuilder Builder { get; private set; }
+        public GameMaster GameMaster { get; private set; }
 
+        //Board-Size-Selection would've been nice... 
         public Form1() : this(45) { }
 
         public Form1(int cubeSize)
@@ -28,41 +27,47 @@ namespace GameOfLife_Projekt
 
         private void InitGame(int cubeSize)
         {
-            gameMaster = new GameMaster(cubeSize)
+            GameMaster = new GameMaster(cubeSize)
             {
                 Statistics = new Statistics(StatsLabel)
             };
-            builder = new CellBuilder(this.gameMaster);
-            builder.BuildCells(this, InitPanel);
+            Builder = new CellBuilder(this.GameMaster);
+            Builder.BuildCells(this, InitPanel);
 
             Controls.Remove(InitPanel);
         }
 
+
+        //Show Coordinates of cell
+        public void GameCell_Hover(object sender, EventArgs e)
+        {
+            ShowLabel(sender);
+        }
+
+        /**
+         * Show coordinates of a cell,
+         * toogle alive/dead of a cell
+         * if a template is selected, this will spawn the template
+         */ 
+        public void GameCell_Click(object sender, EventArgs e)
+        {
+            GameCell cell = sender as GameCell;
+            GameMaster.SelectCell(cell);
+
+            Builder.SpawnSelection(cell, SpawnSelect);
+
+            ShowLabel(sender);
+        }
+
         private void Start_Click(object sender, EventArgs e)
         {
-            if (gameMaster.Start())
+            if (GameMaster.Start())
             {
                 StartButton.Enabled = false;
                 ResetButton.Enabled = false;
                 StopButton.Enabled = true;
             }
         }
-
-       public void GameCell_Hover(object sender, EventArgs e)
-        {
-            ShowLabel(sender);
-        }
-
-       public void GameCell_Click(object sender, EventArgs e)
-        {
-            GameCell cell = sender as GameCell;
-            gameMaster.SelecetCell(cell);
-
-            builder.SpawnSelection(cell, SpawnSelect);
-
-            ShowLabel(sender);
-        }
-
 
         private void ShowLabel(object sender)
         {
@@ -73,7 +78,7 @@ namespace GameOfLife_Projekt
 
         private void Stopbutton_Click(object sender, EventArgs e)
         {
-            if (gameMaster.Stop())
+            if (GameMaster.Stop())
             {
                 StartButton.Enabled = true;
                 StopButton.Enabled = false;
@@ -83,7 +88,7 @@ namespace GameOfLife_Projekt
 
         private void Reset_Click(object sender, EventArgs e)
         {
-            gameMaster.Reset();
+            GameMaster.Reset();
         }
     }
 }

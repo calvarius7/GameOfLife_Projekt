@@ -18,6 +18,10 @@ namespace Logic
             InitBackGroundWorker();
         }
 
+        /**
+         * Start a GameOfLife - run
+         * runs as async-background until cancellation
+         */
         public bool Start()
         {
             if (!backgroundWorker.IsBusy)
@@ -28,6 +32,10 @@ namespace Logic
             return false;
         }
 
+        /**
+         * Remove all living cells, set statistics to zero
+         * Not possible if GameOfLife runs
+         */
         public void Reset()
         {
             if (!backgroundWorker.IsBusy)
@@ -43,6 +51,9 @@ namespace Logic
             }
         }
 
+        /**
+         * Stops the current run of GameOfLife
+         */
         public bool Stop()
         {
             if (backgroundWorker.WorkerSupportsCancellation)
@@ -55,7 +66,11 @@ namespace Logic
             return false;
         }
 
-        public void SelecetCell(GameCell cell)
+        /**
+         * Toggles live/dead of a selected cell
+         * Not possible if GameOfLife runs
+         */
+        public void SelectCell(GameCell cell)
         {
             if (!backgroundWorker.IsBusy)
             {
@@ -69,19 +84,24 @@ namespace Logic
                 }
             }
         }
-
+        //Add a cell to the population
         public void AddCells(GameCell cell)
         {
             Cells.Add(cell);
         }
-
+        /**
+         * Start GameOfLife-instance
+         * Start Game
+         */
         public void GameOfLife()
         {
             GameOfLife game = new GameOfLife();
             game.Play(Cells);
-
         }
 
+        /**
+         * Set all neighbors for every cell in the population
+         */ 
         public void GetNeighborhood()
         {
             foreach (GameCell cell in Cells)
@@ -90,6 +110,9 @@ namespace Logic
             }
         }
 
+        /**
+         * Returns a cell from the population by its coordinates
+         */
         public GameCell FindByRowAndCol(int row, int col)
         {
             return Cells.Select(cell => cell).First(cell => cell.Row == row && cell.Col == col);

@@ -11,6 +11,7 @@ namespace Logic
         private int generation = 0;
         private readonly Label drawStatsHere;
 
+        //No negativ-values allowd
         public int Generation { get => generation; set => generation = value > 0 ? value : 0; }
         public int CurrentlyLiving { get => currentlyLiving; set => currentlyLiving = value > 0 ? value : 0; }
 
@@ -19,7 +20,9 @@ namespace Logic
             this.drawStatsHere = drawStatsHere;
             DrawStats();
         }
-
+        /**
+         * Show the calculated statistics about the living cells in the givin label
+         */ 
         public void ShowStats()
         {
             GetMinMaxCells();

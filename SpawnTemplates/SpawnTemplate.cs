@@ -1,22 +1,13 @@
 ﻿using Logic;
-using System;
 using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GameOfLife_Projekt
-{
+{   
     public abstract class SpawnTemplate
     {
-        GameCell start;
-        List<GameCell> livingCells;
-        int cubeSize = 45;
-
-        public GameCell Start { get => start; set => start = value; }
-        public List<GameCell> LivingCells { get => livingCells; set => livingCells = value; }
-        public int CubeSize { get => cubeSize; set => cubeSize = value; }
+        public GameCell Start { get; set; }
+        public List<GameCell> LivingCells { get; set; }
+        public int CubeSize { get; set; } = 45;
 
         protected SpawnTemplate(GameCell start)
         {
@@ -24,16 +15,20 @@ namespace GameOfLife_Projekt
         }
 
         abstract protected void SetNeighbors();
-
+        
+        /**
+         * Handle if row / col would leave cube
+         * => infinit cube
+         */ 
         protected int ToBigToSmall(int index)
         {
             if(index < 1)
             {
-                index = cubeSize + index;
+                index = CubeSize + index;
             }
-            if(index > cubeSize)
+            if(index > CubeSize)
             {
-               index = index- cubeSize;
+               index = index- CubeSize;
             }
             return index;
 
