@@ -114,7 +114,7 @@ namespace Logic
             while (!worker.CancellationPending)
             {
                 GameOfLife();
-                System.Threading.Thread.Sleep(200);
+                System.Threading.Thread.Sleep(100);
                 worker.ReportProgress(++runs);
             }
             e.Cancel = true;
