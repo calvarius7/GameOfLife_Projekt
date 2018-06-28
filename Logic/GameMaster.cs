@@ -8,11 +8,15 @@ namespace Logic
 {
     public class GameMaster
     {
+        private readonly int cubeSize;
         private readonly List<GameCell> cells;
         public List<GameCell> Cells { get => this.cells; }
 
-        public GameMaster()
+        public int CubeSize => cubeSize;
+
+        public GameMaster(int cubeSize)
         {
+            this.cubeSize = cubeSize;
             cells = new List<GameCell>();
         }
         
@@ -23,66 +27,66 @@ namespace Logic
 
         public void GameOfLife()
         {
-            Judge();
-            foreach(GameCell cell in cells)
+            GameOfLife game = new GameOfLife();
+            game.Play(cells);
+            
+        }
+        
+        public void GetNeighborhood()
+        {
+            foreach (GameCell cell in Cells)
             {
-                cell.LiveOrDie();
+                SetNeighbors(cell);
             }
         }
 
-        public void Judge()
+        private void SetNeighbors(GameCell cell)
         {
-            foreach (GameCell cell in cells)
-            {
-                if (cell.Alive)
-                {
-                    Executioner(cell);
-                }
-                else
-                {
-                    BringToLife(cell);
-                }
-            }
+            int rowAbove = IndexDown(cell.Row);
+            int rowBelow = IndexUp(cell.Row);
+            int colRight = IndexUp(cell.Col);
+            int colLeft = IndexDown(cell.Col);
+
+            List<GameCell> neighbors = new List<GameCell>();
+
+            neighbors.Add(FindByRowAndCol(rowAbove, colLeft));
+            neighbors.Add(FindByRowAndCol(rowAbove, cell.Col));
+            neighbors.Add(FindByRowAndCol(rowAbove, colRight));
+
+            neighbors.Add(FindByRowAndCol(cell.Row, colLeft));
+            neighbors.Add(FindByRowAndCol(cell.Row, colRight));
+
+            neighbors.Add(FindByRowAndCol(rowBelow, colLeft));
+            neighbors.Add(FindByRowAndCol(rowBelow, cell.Col));
+            neighbors.Add(FindByRowAndCol(rowBelow, colRight));
+
+            cell.Neighbors = neighbors;
         }
 
-        private void Executioner(GameCell cell) {
-            int aliveNeighbors = HowManyAliveNeighbors(cell);
-
-            if(aliveNeighbors > 3 || aliveNeighbors < 2)
-            {
-                cell.MarkForDeath();
-            }
-            else
-            {
-                cell.MarkForRevive();
-            }
+        private GameCell FindByRowAndCol(int row, int col)
+        {
+            return cells.Select(cell => cell).First(cell => cell.Row == row && cell.Col == col);
         }
 
-        private void BringToLife(GameCell cell)
-        {
-            int aliveNeighbors = HowManyAliveNeighbors(cell);
-            if(aliveNeighbors == 3)
-            {
-                cell.MarkForRevive();
-            }
-            else
-            {
-                cell.MarkForDeath();
-            }
-         }
 
-        private int HowManyAliveNeighbors(GameCell cell)
+        private int IndexUp(int start)
         {
-            int alive = 0;
-
-            foreach (GameCell neighbour in cell.Neighbors)
+            int index = start + 1;
+            if (index > CubeSize)
             {
-                if (neighbour.Alive)
-                {
-                    alive++;
-                }
+                index = 1;
             }
-            return alive;
+            return index;
+        }
+
+        private int IndexDown(int start)
+        {
+            int index = start - 1;
+            if (index < 1)
+            {
+                index = CubeSize;
+            }
+            return index;
         }
 
     }

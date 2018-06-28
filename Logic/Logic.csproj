@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GameOfLife.cs" />
     <Compile Include="Statistics.cs" />
     <Compile Include="GameCell.cs">
       <SubType>Component</SubType>

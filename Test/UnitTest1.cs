@@ -16,7 +16,7 @@ namespace Test
         public void BuildACube()
         {
             
-            Builder builder = new Builder(10, new GameMaster());
+            CellBuilder builder = new CellBuilder(new GameMaster(10));
 
             builder.BuildCells(new Form1(), new Panel());
             int cells = 10 * 10;
@@ -27,7 +27,7 @@ namespace Test
         [TestMethod]
         public void BuildEmptyCube()
         {
-            Builder builder = new Builder(0, new GameMaster());
+            CellBuilder builder = new CellBuilder(new GameMaster(0));
 
             builder.BuildCells(new Form1(), new Panel());
             int cells = 0;
@@ -95,7 +95,7 @@ namespace Test
         [TestMethod]
         public void KillACellUnderPop()
         {
-            GameMaster gameMaster = new GameMaster();
+            GameMaster gameMaster = new GameMaster(0);
             GameCell test = new GameCell(0, 0);
             test.IsAlive();
             gameMaster.addCells(test);
@@ -117,7 +117,7 @@ namespace Test
         [TestMethod]
         public void KillACellOverpop()
         {
-            GameMaster gameMaster = new GameMaster();
+            GameMaster gameMaster = new GameMaster(0);
             GameCell test = new GameCell(0, 0);
             test.IsAlive();
             gameMaster.addCells(test);
@@ -148,7 +148,7 @@ namespace Test
         [TestMethod]
         public void KeepAlive()
         {
-            GameMaster gameMaster = new GameMaster();
+            GameMaster gameMaster = new GameMaster(0);
             GameCell test = new GameCell(0, 0);
             test.IsAlive();
             gameMaster.addCells(test);
@@ -172,7 +172,7 @@ namespace Test
         [TestMethod]
         public void ReviveACell()
         {
-            GameMaster gameMaster = new GameMaster();
+            GameMaster gameMaster = new GameMaster(0);
             GameCell test = new GameCell(0, 0);
             test.IsDead();
             gameMaster.addCells(test);

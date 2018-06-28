@@ -15,9 +15,9 @@ namespace GameOfLife_Projekt
     {
         private BackgroundWorker backgroundWorker1;
         private GameMaster gameMaster;
-        private Builder builder;
+        private CellBuilder builder;
         private Statistics statistics;
-        public Builder Builder { get => builder; }
+        public CellBuilder Builder { get => builder; }
         public GameMaster GameMaster { get => gameMaster; }
 
         public Form1() : this(45) { }
@@ -49,9 +49,9 @@ namespace GameOfLife_Projekt
 
         private void InitGame(int cubeSize)
         {
-            gameMaster = new GameMaster();
+            gameMaster = new GameMaster(cubeSize);
             statistics = new Statistics(StatsLabel);
-            builder = new Builder(cubeSize, this.gameMaster);
+            builder = new CellBuilder(this.gameMaster);
             builder.BuildCells(this, panel1);
 
             this.Controls.Remove(panel1);
