@@ -73,7 +73,7 @@ namespace GameOfLife_Projekt
 
         private void backgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
-            statistics.Generation = e.ProgressPercentage;
+            statistics.Generation++; 
             statistics.CurrentlyLiving = gameMaster.Cells.Count(cell => cell.Alive);
             statistics.ShowStats();
         }
@@ -140,6 +140,7 @@ namespace GameOfLife_Projekt
                 {
                     cell.IsDead();
                 }
+
                 statistics.SetZero();
             }
         }

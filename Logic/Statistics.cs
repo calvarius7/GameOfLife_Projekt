@@ -16,8 +16,8 @@ namespace Logic
         private int generation = 0;
         private readonly Label drawStats;
 
-        public int Generation { get => generation; set => generation = value; }
-        public int CurrentlyLiving { get => currentlyLiving; set => currentlyLiving = value; }
+        public int Generation { get => generation; set => generation = value > 0 ? value : 0; }
+        public int CurrentlyLiving { get => currentlyLiving; set => currentlyLiving = value > 0 ? value : 0; }
 
         public Statistics(Label drawStatsHere)
         {
@@ -65,6 +65,7 @@ namespace Logic
             maximumCells = 0;
             generation = 0;
             totalCells = 0;
+            currentlyLiving = 0;
             ShowStats();
         }
 
