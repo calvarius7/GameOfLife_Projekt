@@ -132,8 +132,7 @@
             "Glider",
             "Pentomino",
             "SpaceShip",
-            "Clock",
-            "Pentadecathlon "});
+            "Pulsator"});
             this.SpawnSelect.Location = new System.Drawing.Point(10, 355);
             this.SpawnSelect.Name = "SpawnSelect";
             this.SpawnSelect.Size = new System.Drawing.Size(124, 21);

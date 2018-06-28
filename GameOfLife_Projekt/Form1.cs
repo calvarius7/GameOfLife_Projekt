@@ -84,35 +84,35 @@ namespace GameOfLife_Projekt
 
         private void Spawn_Click(object sender, EventArgs e)
         {
-            SpawnTemplate spawn;
-         
-            switch (SpawnSelect.SelectedItem.ToString())
+            if (SpawnSelect.SelectedItem != null)
             {
-                case "Glider":
-                    spawn = new Glider();
-                    break;
-                case "Pentomino":
-                    spawn = new Pentomino();
-                    break;
-                case "SpaceShip":
-                    spawn = new SpaceShip();
-                    break;
-                //case "Clock":
-                //    spawn = new Clock();
-                //    break;
-                //case "Pentadecathlon":
-                //    spawn = new Pentadecathlon();
-                //    break;
-                default:
-                    spawn = null;
-                    break;
-            }
-            if (spawn != null)
-            {
-                foreach (GameCell cell in spawn.LivingCells)
+                SpawnTemplate spawn;
+
+                switch (SpawnSelect.SelectedItem.ToString())
                 {
-                    GameCell found = gameMaster.FindByRowAndCol(cell.Row, cell.Col);
-                    found.IsAlive();
+                    case "Glider":
+                        spawn = new Glider();
+                        break;
+                    case "Pentomino":
+                        spawn = new Pentomino();
+                        break;
+                    case "SpaceShip":
+                        spawn = new SpaceShip();
+                        break;
+                    case "Pulsator":
+                        spawn = new Pulsator();
+                        break;
+                    default:
+                        spawn = null;
+                        break;
+                }
+                if (spawn != null)
+                {
+                    foreach (GameCell cell in spawn.LivingCells)
+                    {
+                        GameCell found = gameMaster.FindByRowAndCol(cell.Row, cell.Col);
+                        found.IsAlive();
+                    }
                 }
             }
             

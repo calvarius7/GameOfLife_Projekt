@@ -9,12 +9,12 @@ namespace GameOfLife_Projekt
 {
     public class SpaceShip : SpawnTemplate
     {
-        public SpaceShip()
+        public SpaceShip(GameCell start) : base(start)
         {
-            Start = new GameCell(10, 30);
             SetNeighbors();
-
         }
+
+        public SpaceShip() : this(new GameCell(10, 30)) { }
 
         private void SetNeighbors()
         {
@@ -23,18 +23,18 @@ namespace GameOfLife_Projekt
             List<GameCell> livingCells = new List<GameCell>
             {
                 Start,
-                new GameCell(startRow - 1, startCol),
-                new GameCell(startRow - 2, startCol)
+                new GameCell(ToBigToSmall(startRow - 1), startCol),
+                new GameCell(ToBigToSmall(startRow - 2), startCol)
             };
 
-            livingCells.Add(new GameCell(startRow - 3, startCol + 1));
-            livingCells.Add(new GameCell(startRow - 4, startCol + 3));
-            livingCells.Add(new GameCell(startRow - 3, startCol + 5));
-            livingCells.Add(new GameCell(startRow - 1, startCol + 5));
-            livingCells.Add(new GameCell(startRow, startCol + 4));
-            livingCells.Add(new GameCell(startRow, startCol + 3));
-            livingCells.Add(new GameCell(startRow, startCol + 2));
-            livingCells.Add(new GameCell(startRow, startCol + 1));
+            livingCells.Add(new GameCell(ToBigToSmall(startRow - 3), ToBigToSmall(startCol + 1)));
+            livingCells.Add(new GameCell(ToBigToSmall(startRow - 4), ToBigToSmall(startCol + 3)));
+            livingCells.Add(new GameCell(ToBigToSmall(startRow - 3), ToBigToSmall(startCol + 5)));
+            livingCells.Add(new GameCell(ToBigToSmall(startRow - 1), ToBigToSmall(startCol + 5)));
+            livingCells.Add(new GameCell(startRow, ToBigToSmall(startCol + 4)));
+            livingCells.Add(new GameCell(startRow, ToBigToSmall(startCol + 3)));
+            livingCells.Add(new GameCell(startRow, ToBigToSmall(startCol + 2)));
+            livingCells.Add(new GameCell(startRow, ToBigToSmall(startCol + 1)));
 
 
             LivingCells = livingCells;

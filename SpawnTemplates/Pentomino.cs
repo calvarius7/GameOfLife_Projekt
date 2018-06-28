@@ -9,11 +9,12 @@ namespace GameOfLife_Projekt
 {
     public class Pentomino : SpawnTemplate
     {
-        public Pentomino()
+        public Pentomino(GameCell start) : base(start)
         {
-            base.Start = new GameCell(25, 25);
             SetNeighbors();
         }
+
+        public Pentomino() : this(new GameCell(25, 25)) { }
 
         private void SetNeighbors()
         {
@@ -22,18 +23,18 @@ namespace GameOfLife_Projekt
             List<GameCell> livingCells = new List<GameCell>
             {
                 base.Start,
-                new GameCell(startRow + 1, startCol),
-                new GameCell(startRow - 1, startCol)
+                new GameCell(ToBigToSmall(startRow + 1), startCol),
+                new GameCell(ToBigToSmall(startRow - 1), startCol)
             };
             if (new Random().Next(0, 2) == 0)
             {
-                livingCells.Add(new GameCell(startRow, startCol - 1));
-                livingCells.Add(new GameCell(startRow - 1, startCol + 1));
+                livingCells.Add(new GameCell(startRow, ToBigToSmall(startCol - 1)));
+                livingCells.Add(new GameCell(ToBigToSmall(startRow - 1), ToBigToSmall(startCol + 1)));
             }
             else
             {
-                livingCells.Add(new GameCell(startRow, startCol + 1));
-                livingCells.Add(new GameCell(startRow - 1, startCol - 1));
+                livingCells.Add(new GameCell(startRow, ToBigToSmall(startCol + 1)));
+                livingCells.Add(new GameCell(ToBigToSmall(startRow - 1), ToBigToSmall(startCol - 1)));
             }
 
             base.LivingCells = livingCells;

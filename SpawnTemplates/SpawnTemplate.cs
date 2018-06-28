@@ -12,9 +12,29 @@ namespace GameOfLife_Projekt
     {
         GameCell start;
         List<GameCell> livingCells;
+        int cubeSize = 45;
 
         public GameCell Start { get => start; set => start = value; }
         public List<GameCell> LivingCells { get => livingCells; set => livingCells = value; }
+        public int CubeSize { get => cubeSize; set => cubeSize = value; }
 
+        public SpawnTemplate(GameCell start)
+        {
+            Start = new GameCell(ToBigToSmall(start.Row), ToBigToSmall(start.Col));
+        }
+
+        public int ToBigToSmall(int index)
+        {
+            if(index < 1)
+            {
+                index = cubeSize + index;
+            }
+            if(index > cubeSize)
+            {
+               index = index- cubeSize;
+            }
+            return index;
+
+        }
     }
 }
