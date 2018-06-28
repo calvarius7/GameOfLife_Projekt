@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace GameOfLife_Projekt
 {
-    class Glider : SpawnTemplate
+    public class Glider : SpawnTemplate
     {
         
         public Glider()
@@ -38,11 +38,6 @@ namespace GameOfLife_Projekt
             }
 
             base.LivingCells = livingCells;
-        }
-
-        public override void Spawn()
-        {
-            throw new NotImplementedException();
         }
     }
 }

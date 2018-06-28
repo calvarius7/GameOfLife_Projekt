@@ -46,8 +46,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Builder.cs" />
-    <Compile Include="Glider.cs" />
-    <Compile Include="SpawnTemplate.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -68,6 +66,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="Properties\DataSources\TemplateCollection.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -86,6 +85,11 @@
       <Project>{eece6aa1-f202-480a-a06c-fe905705817f}</Project>
       <Name>Logic</Name>
     </ProjectReference>
+    <ProjectReference Include="..\SpawnTemplates\SpawnTemplates.csproj">
+      <Project>{a4c5b900-cd92-48e9-b8ae-318f6b701b97}</Project>
+      <Name>SpawnTemplates</Name>
+    </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

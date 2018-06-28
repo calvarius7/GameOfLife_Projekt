@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace GameOfLife_Projekt
 {
-    abstract class SpawnTemplate
+    public abstract class SpawnTemplate
     {
         GameCell start;
         List<GameCell> livingCells;
@@ -16,6 +16,5 @@ namespace GameOfLife_Projekt
         public GameCell Start { get => start; set => start = value; }
         public List<GameCell> LivingCells { get => livingCells; set => livingCells = value; }
 
-        public abstract void Spawn();
     }
 }

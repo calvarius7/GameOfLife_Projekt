@@ -37,6 +37,7 @@
             this.StatsHead = new System.Windows.Forms.Label();
             this.StatsGroup = new System.Windows.Forms.Panel();
             this.Spawn = new System.Windows.Forms.Button();
+            this.SpawnSelect = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // StartButton
@@ -116,13 +117,27 @@
             // 
             // Spawn
             // 
-            this.Spawn.Location = new System.Drawing.Point(13, 356);
+            this.Spawn.Location = new System.Drawing.Point(10, 326);
             this.Spawn.Name = "Spawn";
             this.Spawn.Size = new System.Drawing.Size(75, 23);
             this.Spawn.TabIndex = 8;
             this.Spawn.Text = "Spawn Glider";
             this.Spawn.UseVisualStyleBackColor = true;
             this.Spawn.Click += new System.EventHandler(this.Spawn_Click);
+            // 
+            // SpawnSelect
+            // 
+            this.SpawnSelect.FormattingEnabled = true;
+            this.SpawnSelect.Items.AddRange(new object[] {
+            "Glider",
+            "Pentomino",
+            "SpaceShip",
+            "Clock",
+            "Pentadecathlon "});
+            this.SpawnSelect.Location = new System.Drawing.Point(10, 355);
+            this.SpawnSelect.Name = "SpawnSelect";
+            this.SpawnSelect.Size = new System.Drawing.Size(124, 21);
+            this.SpawnSelect.TabIndex = 9;
             // 
             // Form1
             // 
@@ -131,6 +146,7 @@
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.DimGray;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.SpawnSelect);
             this.Controls.Add(this.Spawn);
             this.Controls.Add(this.StatsHead);
             this.Controls.Add(this.CoordinatesLabel);
@@ -157,6 +173,7 @@
         private System.Windows.Forms.Label StatsHead;
         private System.Windows.Forms.Panel StatsGroup;
         private System.Windows.Forms.Button Spawn;
+        private System.Windows.Forms.ComboBox SpawnSelect;
     }
 }
 

@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logic", "Logic\Logic.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{A15E11DF-9691-42AE-9361-20CB1C02E1C8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpawnTemplates", "SpawnTemplates\SpawnTemplates.csproj", "{A4C5B900-CD92-48E9-B8AE-318F6B701B97}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{A15E11DF-9691-42AE-9361-20CB1C02E1C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A15E11DF-9691-42AE-9361-20CB1C02E1C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A15E11DF-9691-42AE-9361-20CB1C02E1C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A4C5B900-CD92-48E9-B8AE-318F6B701B97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A4C5B900-CD92-48E9-B8AE-318F6B701B97}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A4C5B900-CD92-48E9-B8AE-318F6B701B97}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A4C5B900-CD92-48E9-B8AE-318F6B701B97}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

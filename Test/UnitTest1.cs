@@ -286,5 +286,14 @@ namespace Test
         }
 
 
+        [TestMethod]
+        public void SpawnGlider()
+        {
+            SpawnTemplate template = new Glider();
+
+            Assert.AreEqual(5, template.LivingCells.Count);
+        }
+
+
     }
 }
