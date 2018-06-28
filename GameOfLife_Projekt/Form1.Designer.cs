@@ -30,14 +30,16 @@
         {
             this.start = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
+            this.StatsLabel = new System.Windows.Forms.Label();
             this.stop = new System.Windows.Forms.Button();
             this.Reset = new System.Windows.Forms.Button();
+            this.CoordinatesLabel = new System.Windows.Forms.Label();
+            this.StatsHead = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // start
             // 
-            this.start.Location = new System.Drawing.Point(22, 12);
+            this.start.Location = new System.Drawing.Point(10, 12);
             this.start.Name = "start";
             this.start.Size = new System.Drawing.Size(75, 23);
             this.start.TabIndex = 1;
@@ -49,23 +51,24 @@
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.panel1.Location = new System.Drawing.Point(128, 12);
+            this.panel1.Location = new System.Drawing.Point(120, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(15, 15);
             this.panel1.TabIndex = 0;
             // 
-            // label1
+            // StatsLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(22, 73);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "label1";
+            this.StatsLabel.AutoSize = true;
+            this.StatsLabel.BackColor = System.Drawing.Color.LightGray;
+            this.StatsLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.StatsLabel.Location = new System.Drawing.Point(10, 138);
+            this.StatsLabel.Name = "StatsLabel";
+            this.StatsLabel.Size = new System.Drawing.Size(2, 15);
+            this.StatsLabel.TabIndex = 2;
             // 
             // stop
             // 
-            this.stop.Location = new System.Drawing.Point(22, 114);
+            this.stop.Location = new System.Drawing.Point(10, 41);
             this.stop.Name = "stop";
             this.stop.Size = new System.Drawing.Size(75, 23);
             this.stop.TabIndex = 3;
@@ -75,7 +78,7 @@
             // 
             // Reset
             // 
-            this.Reset.Location = new System.Drawing.Point(22, 364);
+            this.Reset.Location = new System.Drawing.Point(10, 70);
             this.Reset.Name = "Reset";
             this.Reset.Size = new System.Drawing.Size(75, 23);
             this.Reset.TabIndex = 4;
@@ -83,15 +86,37 @@
             this.Reset.UseVisualStyleBackColor = true;
             this.Reset.Click += new System.EventHandler(this.Reset_Click);
             // 
+            // CoordinatesLabel
+            // 
+            this.CoordinatesLabel.AutoSize = true;
+            this.CoordinatesLabel.Location = new System.Drawing.Point(7, 437);
+            this.CoordinatesLabel.Name = "CoordinatesLabel";
+            this.CoordinatesLabel.Size = new System.Drawing.Size(63, 13);
+            this.CoordinatesLabel.TabIndex = 5;
+            this.CoordinatesLabel.Text = "Coordinates";
+            // 
+            // StatsHead
+            // 
+            this.StatsHead.AutoSize = true;
+            this.StatsHead.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.StatsHead.Location = new System.Drawing.Point(7, 125);
+            this.StatsHead.Name = "StatsHead";
+            this.StatsHead.Size = new System.Drawing.Size(63, 13);
+            this.StatsHead.TabIndex = 6;
+            this.StatsHead.Text = "Statistics:";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
+            this.BackColor = System.Drawing.Color.DimGray;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.StatsHead);
+            this.Controls.Add(this.CoordinatesLabel);
             this.Controls.Add(this.Reset);
             this.Controls.Add(this.stop);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.StatsLabel);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.start);
             this.Name = "Form1";
@@ -104,9 +129,11 @@
         #endregion
         private System.Windows.Forms.Button start;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label StatsLabel;
         private System.Windows.Forms.Button stop;
         private System.Windows.Forms.Button Reset;
+        private System.Windows.Forms.Label CoordinatesLabel;
+        private System.Windows.Forms.Label StatsHead;
     }
 }
 

@@ -49,7 +49,7 @@ namespace Logic
         public void IsDead()
         {
             Alive = false;
-            this.BackColor = Color.DarkSlateGray;
+            this.BackColor = Color.Black;
         }
 
         public void LiveOrDie()

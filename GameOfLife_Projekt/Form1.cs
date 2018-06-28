@@ -16,6 +16,7 @@ namespace GameOfLife_Projekt
         private BackgroundWorker backgroundWorker1;
         private GameMaster gameMaster;
         private Builder builder;
+        private Statistics statistics;
         public Builder Builder { get => builder; }
         public GameMaster GameMaster { get => gameMaster; }
 
@@ -33,19 +34,23 @@ namespace GameOfLife_Projekt
         {
             InitializeComponent();
             stop.Enabled = false;
-
+            
         }
 
         private void InitBackGroundWorker()
         {
             backgroundWorker1 = new BackgroundWorker();
-            backgroundWorker1.DoWork += new DoWorkEventHandler(backgroundWorker1_DoWork);
             backgroundWorker1.WorkerSupportsCancellation = true;
+            backgroundWorker1.WorkerReportsProgress = true;
+            backgroundWorker1.DoWork += new DoWorkEventHandler(backgroundWorker1_DoWork);
+            backgroundWorker1.ProgressChanged += new ProgressChangedEventHandler(backgroundWorker1_ProgressChanged);
+
         }
 
         private void InitGame(int cubeSize)
         {
             gameMaster = new GameMaster();
+            statistics = new Statistics(StatsLabel);
             builder = new Builder(cubeSize, this.gameMaster);
             builder.BuildCells(this, panel1);
 
@@ -56,13 +61,21 @@ namespace GameOfLife_Projekt
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
             BackgroundWorker worker = sender as BackgroundWorker;
-
+            int runs = 0;
             while (!worker.CancellationPending)
             {
                 gameMaster.GameOfLife();
                 System.Threading.Thread.Sleep(200);
+                worker.ReportProgress(++runs);
             }
             e.Cancel = true;
+        }
+
+        private void backgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            statistics.Generation = e.ProgressPercentage;
+            statistics.CurrentlyLiving = gameMaster.Cells.Count(cell => cell.Alive);
+            statistics.ShowStats();
         }
 
         private void start_Click(object sender, EventArgs e)
@@ -73,7 +86,6 @@ namespace GameOfLife_Projekt
                 Reset.Enabled = false;
                 stop.Enabled = true;
                 backgroundWorker1.RunWorkerAsync();
-                
             }
 
         }
@@ -85,15 +97,17 @@ namespace GameOfLife_Projekt
 
         public void gameCell_Click(object sender, EventArgs e)
         {
-            GameCell cell = sender as GameCell;
-            if (!cell.Alive)
+            if (!backgroundWorker1.IsBusy)
             {
-                cell.IsAlive();
-            }
-            else
-            {
-                cell.IsDead();
-
+                GameCell cell = sender as GameCell;
+                if (!cell.Alive)
+                {
+                    cell.IsAlive();
+                }
+                else
+                {
+                    cell.IsDead();
+                }
             }
             ShowLabel(sender);
         }
@@ -102,7 +116,7 @@ namespace GameOfLife_Projekt
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("X: " + ((GameCell)sender).Col + " Y: " + ((GameCell)sender).Row);
-            label1.Text = sb.ToString();
+            CoordinatesLabel.Text = sb.ToString();
         }
 
         private void Stopbutton_Click(object sender, EventArgs e)
@@ -114,6 +128,7 @@ namespace GameOfLife_Projekt
                 start.Enabled = true;
                 stop.Enabled = false;
                 Reset.Enabled = true;
+               
             }
         }
 
@@ -125,6 +140,7 @@ namespace GameOfLife_Projekt
                 {
                     cell.IsDead();
                 }
+                statistics.SetZero();
             }
         }
     }
