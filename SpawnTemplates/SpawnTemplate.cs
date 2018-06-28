@@ -18,12 +18,14 @@ namespace GameOfLife_Projekt
         public List<GameCell> LivingCells { get => livingCells; set => livingCells = value; }
         public int CubeSize { get => cubeSize; set => cubeSize = value; }
 
-        public SpawnTemplate(GameCell start)
+        protected SpawnTemplate(GameCell start)
         {
             Start = new GameCell(ToBigToSmall(start.Row), ToBigToSmall(start.Col));
         }
 
-        public int ToBigToSmall(int index)
+        abstract protected void SetNeighbors();
+
+        protected int ToBigToSmall(int index)
         {
             if(index < 1)
             {

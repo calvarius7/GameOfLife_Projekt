@@ -7,19 +7,14 @@ namespace Logic
     public class GameMaster
     {
         private BackgroundWorker backgroundWorker;
-
-
-        private Statistics statistics;
-        private int cubeSize;
-        private readonly List<GameCell> cells;
-        public List<GameCell> Cells { get => this.cells; }
-        public int CubeSize { get => cubeSize; set => cubeSize = value; }
-        public Statistics Statistics { get => statistics; set => statistics = value; }
+        public List<GameCell> Cells { get; }
+        public int CubeSize { get; set; }
+        public Statistics Statistics { get; set; }
 
         public GameMaster(int cubeSize)
         {
-            this.CubeSize = cubeSize;
-            cells = new List<GameCell>();
+            CubeSize = cubeSize;
+            Cells = new List<GameCell>();
             InitBackGroundWorker();
         }
 
@@ -32,7 +27,6 @@ namespace Logic
             }
             return false;
         }
-
 
         public void Reset()
         {
@@ -78,13 +72,13 @@ namespace Logic
 
         public void AddCells(GameCell cell)
         {
-            cells.Add(cell);
+            Cells.Add(cell);
         }
 
         public void GameOfLife()
         {
             GameOfLife game = new GameOfLife();
-            game.Play(cells);
+            game.Play(Cells);
 
         }
 
@@ -94,6 +88,11 @@ namespace Logic
             {
                 SetNeighbors(cell);
             }
+        }
+
+        public GameCell FindByRowAndCol(int row, int col)
+        {
+            return Cells.Select(cell => cell).First(cell => cell.Row == row && cell.Col == col);
         }
 
         private void InitBackGroundWorker()
@@ -153,12 +152,6 @@ namespace Logic
 
             cell.Neighbors = neighbors;
         }
-
-        public GameCell FindByRowAndCol(int row, int col)
-        {
-            return cells.Select(cell => cell).First(cell => cell.Row == row && cell.Col == col);
-        }
-
 
         private int IndexUp(int start)
         {

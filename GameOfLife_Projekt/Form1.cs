@@ -57,8 +57,12 @@ namespace GameOfLife_Projekt
         {
             GameCell cell = sender as GameCell;
             gameMaster.SelecetCell(cell);
+
+            builder.SpawnSelection(cell, SpawnSelect);
+
             ShowLabel(sender);
         }
+
 
         private void ShowLabel(object sender)
         {
@@ -80,42 +84,6 @@ namespace GameOfLife_Projekt
         private void Reset_Click(object sender, EventArgs e)
         {
             gameMaster.Reset();
-        }
-
-        private void Spawn_Click(object sender, EventArgs e)
-        {
-            if (SpawnSelect.SelectedItem != null)
-            {
-                SpawnTemplate spawn;
-
-                switch (SpawnSelect.SelectedItem.ToString())
-                {
-                    case "Glider":
-                        spawn = new Glider();
-                        break;
-                    case "Pentomino":
-                        spawn = new Pentomino();
-                        break;
-                    case "SpaceShip":
-                        spawn = new SpaceShip();
-                        break;
-                    case "Pulsator":
-                        spawn = new Pulsator();
-                        break;
-                    default:
-                        spawn = null;
-                        break;
-                }
-                if (spawn != null)
-                {
-                    foreach (GameCell cell in spawn.LivingCells)
-                    {
-                        GameCell found = gameMaster.FindByRowAndCol(cell.Row, cell.Col);
-                        found.IsAlive();
-                    }
-                }
-            }
-            
         }
     }
 }

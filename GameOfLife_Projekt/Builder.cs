@@ -7,21 +7,19 @@ namespace GameOfLife_Projekt
 {
     public class CellBuilder
     {
-        private GameMaster gameMaster;
-       public GameMaster GameMaster { get => this.gameMaster; set => gameMaster = value; }
-
+        public GameMaster GameMaster { get; set; }
 
         public CellBuilder(GameMaster gameMaster)
         {
             GameMaster = gameMaster;
         }
 
-       public void BuildCells(Form form, Panel start)
+        public void BuildCells(Form form, Panel start)
         {
-            int row = gameMaster.CubeSize;
+            int row = GameMaster.CubeSize;
             while (row > 0)
             {
-                int col = gameMaster.CubeSize;
+                int col = GameMaster.CubeSize;
                 while (col > 0)
                 {
                     CreateOneCell(form, start, row, col);
@@ -29,7 +27,36 @@ namespace GameOfLife_Projekt
                 }
                 row--;
             }
-            gameMaster.GetNeighborhood();
+            GameMaster.GetNeighborhood();
+        }
+
+        public void SpawnSelection(GameCell start, ComboBox selected)
+        {
+            if (selected.SelectedItem != null)
+            {
+                SpawnTemplate spawn;
+
+                switch (selected.SelectedItem.ToString())
+                {
+                    case "Glider":
+                        spawn = new Glider(start);
+                        break;
+                    case "Pentomino":
+                        spawn = new Pentomino(start);
+                        break;
+                    case "SpaceShip":
+                        spawn = new SpaceShip(start);
+                        break;
+                    case "Pulsator":
+                        spawn = new Pulsator(start);
+                        break;
+                    default:
+                        spawn = null;
+                        break;
+                }
+
+                SpawnSelected(spawn);
+            }
         }
 
         private void CreateOneCell(Form form, Panel start, int row, int col)
@@ -44,8 +71,20 @@ namespace GameOfLife_Projekt
             cell.MouseHover += new EventHandler(((Form1)form).GameCell_Hover);
 
             form.Controls.Add(cell);
-            gameMaster.AddCells(cell);
-            
+            GameMaster.AddCells(cell);
+
+        }
+
+        private void SpawnSelected(SpawnTemplate spawn)
+        {
+            if (spawn != null)
+            {
+                foreach (GameCell spawnCell in spawn.LivingCells)
+                {
+                    GameCell found = GameMaster.FindByRowAndCol(spawnCell.Row, spawnCell.Col);
+                    found.IsAlive();
+                }
+            }
         }
     }
 }

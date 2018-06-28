@@ -10,23 +10,18 @@ namespace GameOfLife_Projekt
     public class Glider : SpawnTemplate
     {
 
-        public Glider() : this(new GameCell(12, 12)) { }
-        
-
         public Glider(GameCell start) : base(start)
         {
             SetNeighbors();
         }
 
-        
-        private void SetNeighbors()
+        protected override void SetNeighbors()
         {
-            int startRow = base.Start.Row;
-            int startCol = base.Start.Col;
+            int startRow = Start.Row;
+            int startCol = Start.Col;
             List<GameCell> livingCells = new List<GameCell>
             {
-                
-                base.Start,
+                Start,
                 new GameCell(ToBigToSmall(startRow + 1), startCol),
                 new GameCell(ToBigToSmall(startRow + 2), startCol)
             };
@@ -41,7 +36,7 @@ namespace GameOfLife_Projekt
                 livingCells.Add(new GameCell(ToBigToSmall(startRow + 1), ToBigToSmall(startCol + 2)));
             }
 
-            base.LivingCells = livingCells;
+            LivingCells = livingCells;
         }
     }
 }

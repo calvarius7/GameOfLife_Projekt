@@ -1,9 +1,5 @@
 ﻿using Logic;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GameOfLife_Projekt
 {
@@ -14,9 +10,7 @@ namespace GameOfLife_Projekt
             SetNeighbors();
         }
 
-        public SpaceShip() : this(new GameCell(10, 30)) { }
-
-        private void SetNeighbors()
+        protected override void SetNeighbors()
         {
             int startRow = Start.Row;
             int startCol = Start.Col;
@@ -35,7 +29,6 @@ namespace GameOfLife_Projekt
             livingCells.Add(new GameCell(startRow, ToBigToSmall(startCol + 3)));
             livingCells.Add(new GameCell(startRow, ToBigToSmall(startCol + 2)));
             livingCells.Add(new GameCell(startRow, ToBigToSmall(startCol + 1)));
-
 
             LivingCells = livingCells;
         }

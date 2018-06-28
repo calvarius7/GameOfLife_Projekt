@@ -1,9 +1,6 @@
 ﻿using Logic;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GameOfLife_Projekt
 {
@@ -14,15 +11,13 @@ namespace GameOfLife_Projekt
             SetNeighbors();
         }
 
-        public Pentomino() : this(new GameCell(25, 25)) { }
-
-        private void SetNeighbors()
+        protected override void SetNeighbors()
         {
-            int startRow = base.Start.Row;
-            int startCol = base.Start.Col;
+            int startRow = Start.Row;
+            int startCol = Start.Col;
             List<GameCell> livingCells = new List<GameCell>
             {
-                base.Start,
+                Start,
                 new GameCell(ToBigToSmall(startRow + 1), startCol),
                 new GameCell(ToBigToSmall(startRow - 1), startCol)
             };
@@ -37,7 +32,7 @@ namespace GameOfLife_Projekt
                 livingCells.Add(new GameCell(ToBigToSmall(startRow - 1), ToBigToSmall(startCol - 1)));
             }
 
-            base.LivingCells = livingCells;
+            LivingCells = livingCells;
         }
     }
 }

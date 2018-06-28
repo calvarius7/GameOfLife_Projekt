@@ -1,9 +1,5 @@
 ﻿using Logic;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GameOfLife_Projekt
 {
@@ -15,15 +11,13 @@ namespace GameOfLife_Projekt
             SetNeighbors();
         }
 
-        public Pulsator() : this(new GameCell(36, 12)) { }
-
-        private void SetNeighbors()
+        protected override void SetNeighbors()
         {
-            int startRow = base.Start.Row;
-            int startCol = base.Start.Col;
+            int startRow = Start.Row;
+            int startCol = Start.Col;
             List<GameCell> livingCells = new List<GameCell>
             {
-                base.Start,
+                Start,
                 new GameCell(startRow, ToBigToSmall(startCol+1)),
                 new GameCell(ToBigToSmall(startRow +1), ToBigToSmall(startCol+2)),
                 new GameCell(ToBigToSmall(startRow -1), ToBigToSmall(startCol+2)),
@@ -37,7 +31,7 @@ namespace GameOfLife_Projekt
                 new GameCell(startRow, ToBigToSmall(startCol+9))
             };
 
-            base.LivingCells = livingCells;
+            LivingCells = livingCells;
         }
     }
 }
